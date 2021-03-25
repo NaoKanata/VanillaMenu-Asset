@@ -1,0 +1,10 @@
+{
+    "name": "com.naok.vvvanillamenu", 
+    "displayName": "VanillaMenu",     
+    "version": "0.7.0",       
+    "unity": "2020.2",                
+    "description": "Menu ライブラリです",
+    "dependencies": {
+        "com.unity.textmeshpro": "2.0.1"
+    }
+}
