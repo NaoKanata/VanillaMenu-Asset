@@ -83,19 +83,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &785716944966300790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3023324381612363320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54146a2a7c566554493c031596c4915e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monitoringDataName: Flags/hogehoge
 --- !u!1 &5065561835347892844
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,19 +969,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 562761875228925904, guid: 0b100be13622a2843b17948177014a2d, type: 3}
   m_PrefabInstance: {fileID: 1149063292544832894}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &2774291944040777856 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2986459574654213630, guid: 0b100be13622a2843b17948177014a2d, type: 3}
-  m_PrefabInstance: {fileID: 1149063292544832894}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3023324381612363320 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2740241893124938566, guid: 0b100be13622a2843b17948177014a2d, type: 3}
-  m_PrefabInstance: {fileID: 1149063292544832894}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6693698230968051460 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5987115594679431802, guid: 0b100be13622a2843b17948177014a2d, type: 3}
+  m_PrefabInstance: {fileID: 1149063292544832894}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2774291944040777856 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2986459574654213630, guid: 0b100be13622a2843b17948177014a2d, type: 3}
   m_PrefabInstance: {fileID: 1149063292544832894}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &3833017560924823966 stripped
@@ -1651,6 +1633,10 @@ PrefabInstance:
     - target: {fileID: 733060310265002561, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
       propertyPath: m_Name
       value: ToggleUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127406671959144965, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: selfData
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3127406671959144965, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
       propertyPath: setDataName

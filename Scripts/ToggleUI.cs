@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,10 @@ using VVVanilla.Core.Constants;
 
 namespace VVVanilla.Menu
 {
-    public class ToggleUI : MonoBehaviour, IMonitorUI<bool>
+    [Serializable]
+    public class UnityEventBool : UnityEvent<bool> {}
+
+    public class ToggleUI : MonoBehaviour
     {
         [SerializeField]
         Animator animator;
@@ -19,36 +23,44 @@ namespace VVVanilla.Menu
         [SerializeField]
         string setDataName = "sampleData";
         [SerializeField]
-        UnityEvent getValueFunc;
+        UnityEventBool sendValueFunc;
+        [SerializeField]
+        delegate bool getValueFunc();
 
-        public void SetValue(bool value) {
-
-        }
-        public bool GetValue() {
-            return false;
-        }
+        [SerializeField]
+        private bool selfData = false;
 
         // Start is called before the first frame update
         void Start()
         {
+            // データベースから値を取得する
+            // 親の MenuUI から取得するようにする
+            CheckValue();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            // UnityEvent に置き換える
-            // if (StatusManager.instance.Get(setDataName) == null)
-            // {
-            //     StatusManager.instance.Set(setDataName, false);
-            // }
-            // bool f = (bool)StatusManager.instance.Get(setDataName);
-            // animator.SetBool("Flag", f);
+        public bool GetValue() {
+            return false;
+        }
+
+        private void OnEnable() {
+            animator.SetBool("Flag", selfData);
         }
 
         public void ChangeValue()
         {
-            // bool f = (bool)StatusManager.instance.Get(dataName);
-            // StatusManager.instance.Set(dataName, !f);
+            // 自信のデータを更新
+            selfData = !selfData;
+            CheckValue();
+
+        }
+
+        public void CheckValue()
+        {
+            // subscribe した関数を呼び出し
+            sendValueFunc.Invoke(selfData);
+
+            // 変更時のアニメーションを実行
+            animator.SetBool("Flag", selfData);
         }
         
     }

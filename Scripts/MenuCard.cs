@@ -20,7 +20,7 @@ namespace VVVanilla.Menu
         void Update()
         {
             if(Input.GetButtonDown("Cancel")) {
-                Back("MenuExit");
+                Back();
             }
         }
 
