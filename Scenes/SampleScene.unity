@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 830659995}
   - component: {fileID: 830659994}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6853c77a11d3b4ebe8b884bc747e2d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialMenu: {fileID: 7797869570842406503, guid: b35b56b2955bd2c448ed233868287477, type: 3}
+  initialMenu: {fileID: 1599675296495997114, guid: d192f601fb072b84b9d47dfd03ff7dbd, type: 3}
   TipsBarUIAnim: {fileID: 0}
   isViewTipsBarUI: 1
 --- !u!4 &830659995

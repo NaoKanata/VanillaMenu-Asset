@@ -1,59 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 namespace VVVanilla.Menu
 {
-    public class MenuCard : MonoBehaviour
+    public class MenuCard : MenuCardBase
     {
-        [SerializeField]
-        GameObject firstTarget = null;
-
         // Start is called before the first frame update
-        void Start()
+        protected override void Start()
         {
-            EventSystem.current.SetSelectedGameObject(firstTarget);
+            base.Start();
         }
 
         // Update is called once per frame
-        void Update()
+        protected override void Update()
         {
-            if(Input.GetButtonDown("Cancel")) {
-                Back();
-            }
+            base.Update();
         }
 
-        // public void SetInitialForcus(string childName)
-        // {
-        //     firstTarget = transform.Find(childName).gameObject;
-        // }
-
-        public void CreateMenu(string menuName)
+        /// <summary>
+        /// MenuCard の生成
+        /// </summary>
+        /// <param name="menuName"></param>
+        public void Create(string menuName)
         {
             MenuManager.instance.CreateMenu(menuName);
         }
 
-        public void Back(string exitEvent = "")
+        /// <summary>
+        /// 現在の MenuCard を消して前の MenuCard に戻る
+        /// </summary>
+        /// <param name="menuName"></param>
+        public void Back()
         {
-            MenuManager.instance.Back(exitEvent);
+            MenuManager.instance.Back();
         }
 
-        public void SetStatus(string dataName, object data) {
-            // TODO UnityEvent に置き換える
-            // StatusManager.instance.Set(dataName, data);
-        }
+        // TODO ここらへんどうするか問題
+        // public void SetStatus(string dataName, object data) {
+        //     // TODO UnityEvent に置き換える
+        //     // StatusManager.instance.Set(dataName, data);
+        // }
 
-        public void SetStatusBoolTrue(string dataName) {
-            SetStatus(dataName, true);
-        }
-        public void SetStatusBoolFalse(string dataName) {
-            SetStatus(dataName, false);
-        }
-        public void SetStatusBoolToggle(string dataName) {
-            // var f = StatusManager.instance.Get(dataName);
-            // SetStatus(dataName, !(bool)f);
-        }
+        // public void SetStatusBoolTrue(string dataName) {
+        //     SetStatus(dataName, true);
+        // }
+        // public void SetStatusBoolFalse(string dataName) {
+        //     SetStatus(dataName, false);
+        // }
+        // public void SetStatusBoolToggle(string dataName) {
+        //     // var f = StatusManager.instance.Get(dataName);
+        //     // SetStatus(dataName, !(bool)f);
+        // }
     }
 }
