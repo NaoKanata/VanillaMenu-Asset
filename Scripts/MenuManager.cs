@@ -5,9 +5,7 @@ using VVVanilla.Core;
 using VVVanilla.Core.Constants;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
-
-using System.Threading;
-using System.Threading.Tasks;
+using UnityEngine.InputSystem;
 
 namespace VVVanilla.Menu
 {
@@ -18,8 +16,8 @@ namespace VVVanilla.Menu
     }
 	public class MenuManager : MonoBehaviourWithSelfInstanceBase<MenuManager>
 	{
-		// 初期の画面
-		[SerializeField]
+        // 初期の画面
+        [SerializeField]
         GameObject initialMenu;
         // // TODO TipsBar は廃止予定
 		// [SerializeField]
@@ -28,6 +26,7 @@ namespace VVVanilla.Menu
         bool isViewTipsBarUI = true;
 
         GameObject _currentMenuCard = null;
+        PlayerInput _currentPlayerInput = null;
 
         List<MenuCardParam> _stackMenuList; // NOTE Prefab の GameObject を保持すること
 
@@ -35,6 +34,7 @@ namespace VVVanilla.Menu
         void Start()
 		{
             _stackMenuList = new List<MenuCardParam>();
+            _currentPlayerInput = GetComponent<PlayerInput>();
 
             // initialMenu が設定されていたら割り当てる
             if (initialMenu != null)
@@ -50,6 +50,9 @@ namespace VVVanilla.Menu
 		// Update is called once per frame
 		void Update()
         {
+            // if(_currentPlayerInput.currentActionMap["Submit"].ReadValue<float>()>0) {
+            //     Debug.Log("hogehoge");
+            // }
             if (_stackMenuList.Count > 0 && EventSystem.current.currentSelectedGameObject != null)
             {
                 MenuCardParam menuCardParam = _stackMenuList[_stackMenuList.Count - 1];
@@ -57,6 +60,10 @@ namespace VVVanilla.Menu
                 // Debug.Log("" + menuCardParam.targetObject + " : " + menuCardParam.childName);
                 _stackMenuList[_stackMenuList.Count - 1] = menuCardParam;
             }
+        }
+
+        public PlayerInput CurrentPlayerInput {
+            get { return _currentPlayerInput; }
         }
 
         /// <summary>

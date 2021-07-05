@@ -11,6 +11,8 @@ namespace VVVanilla.Menu {
         [SerializeField]
         int indexNum = 0;
 
+        int _pressDownCount = 0;
+
 
         // Start is called before the first frame update
         void Start()
@@ -24,16 +26,24 @@ namespace VVVanilla.Menu {
             // 現在のフォーカスがTab内に含まれているかチェックが必要
             if(_CheckInnerChildObjectFromContentList()) 
             {
-                if(Input.GetButtonDown("Horizontal")) 
+                if(MenuManager.instance.CurrentPlayerInput.currentActionMap["Move"].ReadValue<Vector2>().x != 0)
+                // if(Input.GetButtonDown("Horizontal")) 
                 {
-                    var lr = Input.GetAxis("Horizontal");
-                    indexNum += lr > 0 ? 1 : -1;
-                    if(indexNum >= tabList.Count) {
-                        indexNum %= tabList.Count;
-                    } else if( indexNum < 0) {
-                        indexNum = tabList.Count - 1;
+                    _pressDownCount++;
+                    if(_pressDownCount == 1) {
+                        // var lr = Input.GetAxis("Horizontal");
+                        var lr = MenuManager.instance.CurrentPlayerInput.currentActionMap["Move"].ReadValue<Vector2>().x;
+                        indexNum += lr > 0 ? 1 : -1;
+                        if(indexNum >= tabList.Count) {
+                            indexNum %= tabList.Count;
+                        } else if( indexNum < 0) {
+                            indexNum = tabList.Count - 1;
+                        }
+                        _ChangeTab(indexNum);
                     }
-                    _ChangeTab(indexNum);
+                }
+                else {
+                    _pressDownCount = 0;
                 }
             }
         }
