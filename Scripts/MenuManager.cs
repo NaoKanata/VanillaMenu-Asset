@@ -50,15 +50,12 @@ namespace VVVanilla.Menu
 		// Update is called once per frame
 		void Update()
         {
-            // if(_currentPlayerInput.currentActionMap["Submit"].ReadValue<float>()>0) {
-            //     Debug.Log("hogehoge");
-            // }
             if (_stackMenuList.Count > 0 && EventSystem.current.currentSelectedGameObject != null)
             {
                 MenuCardParam menuCardParam = _stackMenuList[_stackMenuList.Count - 1];
                 menuCardParam.childName = GetTargetNameWithConstruction(EventSystem.current.currentSelectedGameObject);
-                // Debug.Log("" + menuCardParam.targetObject + " : " + menuCardParam.childName);
                 _stackMenuList[_stackMenuList.Count - 1] = menuCardParam;
+                ShowStackMenuList();
             }
         }
 
@@ -78,6 +75,16 @@ namespace VVVanilla.Menu
                 str = targetName.name + "/" + str;
             }
             return str;
+        }
+
+        void ShowStackMenuList()
+        {
+            // string str = "";
+            // for (int i = 0; i < _stackMenuList.Count;i++) {
+            //     var param = _stackMenuList[i];
+            //     str += $" - {param.targetObject},{param.childName}";
+            // }
+            // Debug.Log(str);
         }
 
 		// -----------------------------

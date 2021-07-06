@@ -43,22 +43,25 @@ namespace VVVanilla.Menu {
             // フォーカスがこのオブジェクトの時のみ実行
             if(EventSystem.current.currentSelectedGameObject == gameObject)
             {
-                if(!isFirstFocus && Input.GetButtonDown("Submit")) {
-                    EventSystem.current.SetSelectedGameObject(parentObject);
+                MenuManager.instance.CurrentPlayerInput.SwitchCurrentActionMap("UI");
+                if(!isFirstFocus && MenuManager.instance.CurrentPlayerInput.currentActionMap["Submit"].ReadValue<float>() > 0) {
+                    // EventSystem.current.SetSelectedGameObject(parentObject);
                 }
-                else if(Input.GetButtonDown("Cancel")) {
+                else if(MenuManager.instance.CurrentPlayerInput.currentActionMap["Cancel"].ReadValue<int>() > 0) {
                     EventSystem.current.SetSelectedGameObject(parentObject);
                     // StatusManager.instance.Set(setDataName, previousValue);
                 }
+                MenuManager.instance.CurrentPlayerInput.SwitchCurrentActionMap("Player");
 
-                float ud = Input.GetAxis("Horizontal");
+                // float ud = Input.GetAxis("Horizontal");
+                float ud = MenuManager.instance.CurrentPlayerInput.currentActionMap["Move"].ReadValue<Vector2>().y;
                 if(ud > 0) {
                     // StatusManager.instance.Set(setDataName, data + 1);
                 }
                 else if(ud < 0) {
                     // StatusManager.instance.Set(setDataName, data - 1);
                 }
-                if(isFirstFocus) isFirstFocus = false;
+                isFirstFocus = false;
             }
             else
             {

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,13 +5,12 @@ using UnityEngine.EventSystems;
 namespace VVVanilla.Menu {
     public class TabUI : MonoBehaviour
     {
-        List<GameObject> tabList;
-        List<GameObject> contentList;
+        List<GameObject> _tabList;
+        List<GameObject> _contentList;
         [SerializeField]
-        int indexNum = 0;
+        int _indexNum = 0;
 
         int _pressDownCount = 0;
-
 
         // Start is called before the first frame update
         void Start()
@@ -26,20 +24,20 @@ namespace VVVanilla.Menu {
             // 現在のフォーカスがTab内に含まれているかチェックが必要
             if(_CheckInnerChildObjectFromContentList()) 
             {
-                if(MenuManager.instance.CurrentPlayerInput.currentActionMap["Move"].ReadValue<Vector2>().x != 0)
                 // if(Input.GetButtonDown("Horizontal")) 
+                if(MenuManager.instance.CurrentPlayerInput.currentActionMap["Move"].ReadValue<Vector2>().x != 0)
                 {
                     _pressDownCount++;
                     if(_pressDownCount == 1) {
                         // var lr = Input.GetAxis("Horizontal");
                         var lr = MenuManager.instance.CurrentPlayerInput.currentActionMap["Move"].ReadValue<Vector2>().x;
-                        indexNum += lr > 0 ? 1 : -1;
-                        if(indexNum >= tabList.Count) {
-                            indexNum %= tabList.Count;
-                        } else if( indexNum < 0) {
-                            indexNum = tabList.Count - 1;
+                        _indexNum += lr > 0 ? 1 : -1;
+                        if(_indexNum >= _tabList.Count) {
+                            _indexNum %= _tabList.Count;
+                        } else if( _indexNum < 0) {
+                            _indexNum = _tabList.Count - 1;
                         }
-                        _ChangeTab(indexNum);
+                        _ChangeTab(_indexNum);
                     }
                 }
                 else {
@@ -50,7 +48,7 @@ namespace VVVanilla.Menu {
 
         bool _CheckInnerChildObjectFromContentList() {
             var targetObj = EventSystem.current.currentSelectedGameObject;
-            foreach(GameObject go in contentList) {
+            foreach(GameObject go in _contentList) {
                 if(_CheckInnerChildObject(go, targetObj)) return true;
             }
             return false;
@@ -70,27 +68,27 @@ namespace VVVanilla.Menu {
         void _ChangeTab(int num)
         {
             // TODO フォーカスを当てるUIを設定する
-            for(int i = 0 ; i < tabList.Count; i++) {
+            for(int i = 0 ; i < _tabList.Count; i++) {
                 // tab はアクティブなものだけ高さを高くするようにする
-                tabList[i].GetComponent<TabSticky>().activeFlag = i == num;
+                _tabList[i].GetComponent<TabSticky>().activeFlag = i == num;
                 // content は必要なものだけ表示するようにする
-                contentList[i].SetActive(i == num);
-                if( i == num ) contentList[i].GetComponent<TabContent>().SetInitialTarget();
+                _contentList[i].SetActive(i == num);
+                if( i == num ) _contentList[i].GetComponent<TabContent>().SetInitialTarget();
             }
         }
 
         void _InitializeTabCount() {
-            tabList = new List<GameObject>();
-            contentList = new List<GameObject>();
+            _tabList = new List<GameObject>();
+            _contentList = new List<GameObject>();
             for(int i = 0 ; i < transform.Find("StikeyList").childCount; i++) {
-                tabList.Add(transform.Find("StikeyList").GetChild(i).gameObject);
-                tabList[i].GetComponent<TabSticky>().activeFlag = false;
+                _tabList.Add(transform.Find("StikeyList").GetChild(i).gameObject);
+                _tabList[i].GetComponent<TabSticky>().activeFlag = false;
             }
             for(int i = 0 ; i < transform.Find("ContentList").childCount; i++) {
-                contentList.Add(transform.Find("ContentList").GetChild(i).gameObject);
-                contentList[i].gameObject.SetActive(false);
+                _contentList.Add(transform.Find("ContentList").GetChild(i).gameObject);
+                _contentList[i].gameObject.SetActive(false);
             }
-            _ChangeTab(indexNum);
+            _ChangeTab(_indexNum);
         }
     }
 }
