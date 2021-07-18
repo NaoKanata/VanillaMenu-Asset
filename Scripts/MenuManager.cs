@@ -23,12 +23,14 @@ namespace VVVanilla.Menu
 		// [SerializeField]
         // Animator TipsBarUIAnim;
         [SerializeField]
-        bool isViewTipsBarUI = true;
+        bool _isViewTipsBarUI = true;
+        bool _isPressedCancel = false;
 
         GameObject _currentMenuCard = null;
         PlayerInput _currentPlayerInput = null;
 
         List<MenuCardParam> _stackMenuList; // NOTE Prefab の GameObject を保持すること
+
 
         // Start is called before the first frame update
         void Start()
@@ -57,6 +59,13 @@ namespace VVVanilla.Menu
                 _stackMenuList[_stackMenuList.Count - 1] = menuCardParam;
                 ShowStackMenuList();
             }
+
+            // キャンセルボタンが押された場合
+            if(!_isPressedCancel && CurrentPlayerInput.currentActionMap["Cancel"].ReadValue<float>() != 0)
+            {
+                Back();
+            }
+            _isPressedCancel = CurrentPlayerInput.currentActionMap["Cancel"].ReadValue<float>() != 0;
         }
 
         public PlayerInput CurrentPlayerInput {

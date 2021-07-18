@@ -262,19 +262,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2066032898611985147}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5518864329381172885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +305,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a9e4037f65d4a784ab14fe9c37045cbc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 77761abc4c9fd944995a9e39b799b248, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

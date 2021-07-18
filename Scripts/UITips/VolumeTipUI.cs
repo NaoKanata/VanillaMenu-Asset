@@ -43,6 +43,7 @@ namespace VVVanilla.Menu {
             // フォーカスがこのオブジェクトの時のみ実行
             if(EventSystem.current.currentSelectedGameObject == gameObject)
             {
+                // TODO これを実行すると、値がリセットしてしまうため、操作時とそうでないときとで値を変える必要あり
                 MenuManager.instance.CurrentPlayerInput.SwitchCurrentActionMap("UI");
                 if(!isFirstFocus && MenuManager.instance.CurrentPlayerInput.currentActionMap["Submit"].ReadValue<float>() > 0) {
                     // EventSystem.current.SetSelectedGameObject(parentObject);
