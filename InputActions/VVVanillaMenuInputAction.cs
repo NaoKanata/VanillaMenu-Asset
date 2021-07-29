@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/VanillaMenu-Asset/InputActions/VVVanillaMenuInputAction.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Packages/com.naok.vvvanillamenu/InputActions/VVVanillaMenuInputAction.inputactions'
 
 using System;
 using System.Collections;

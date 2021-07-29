@@ -115,6 +115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstTarget: {fileID: 3604919242153747238}
+  menuUIAccessRegisters:
+  - Key: 
+    Value: {fileID: 0}
 --- !u!95 &7278925591237099201
 Animator:
   serializedVersion: 3

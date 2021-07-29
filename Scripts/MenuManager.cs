@@ -19,9 +19,7 @@ namespace VVVanilla.Menu
         // 初期の画面
         [SerializeField]
         GameObject initialMenu;
-        // // TODO TipsBar は廃止予定
-		// [SerializeField]
-        // Animator TipsBarUIAnim;
+
         [SerializeField]
         bool _isViewTipsBarUI = true;
         bool _isPressedCancel = false;
@@ -31,6 +29,19 @@ namespace VVVanilla.Menu
 
         List<MenuCardParam> _stackMenuList; // NOTE Prefab の GameObject を保持すること
 
+        // 値を渡すイベント
+        [SerializeField]
+        public UnityEvent<string, string> SetStatusEvent;
+
+
+        public void OnChangeStatus(string key, string value) 
+        {
+            Debug.Log($"key:{key},value:{value}");
+            // 登録したキーと値によって反映させる値を切り替える
+            if(_currentMenuCard != null) {
+                _currentMenuCard.GetComponent<MenuCard>().AffectValueFromReceivedData(key, value);
+            }
+        }
 
         // Start is called before the first frame update
         void Start()
