@@ -6,18 +6,16 @@ using UnityEngine.Events;
 
 namespace VVVanilla.Menu
 {
-    [System.Serializable]
-    public class MenuUIAccessRegister : Serialize.KeyAndValue<string, GameObject>{
+    // [System.Serializable]
+    // public class MenuUIAccessRegister : Serialize.KeyAndValue<string, GameObject>{
 
-        public MenuUIAccessRegister (string key, GameObject value) : base (key, value) {
+    //     public MenuUIAccessRegister (string key, GameObject value) : base (key, value) {
 
-        }
-    }
+    //     }
+    // }
 
     public class MenuCard : MenuCardBase
     {
-        [SerializeField]
-        List<MenuUIAccessRegister> menuUIAccessRegisters;
         // Start is called before the first frame update
         protected override void Start()
         {
@@ -28,20 +26,6 @@ namespace VVVanilla.Menu
         protected override void Update()
         {
             base.Update();
-        }
-
-        /// <summary>
-        /// Status が更新されたらそれに合わせて更新する
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        public void AffectValueFromReceivedData(string key, string value) {
-            // Debug.Log($"Received Data: key={key}, value={value}");
-            foreach(MenuUIAccessRegister param in menuUIAccessRegisters) {
-                if(param.Key == key) {
-                    param.Value.GetComponent<IUITips>().SetValue(value);
-                }
-            }
         }
 
         /// <summary>
@@ -61,21 +45,5 @@ namespace VVVanilla.Menu
         {
             MenuManager.instance.Back();
         }
-
-        // TODO ここらへんどうするか問題
-        public void SetStatus(string dataName, object data) {
-            MenuManager.instance.SetStatusEvent.Invoke(dataName,data.ToString());
-        }
-
-        // public void SetStatusBoolTrue(string dataName) {
-        //     SetStatus(dataName, true);
-        // }
-        // public void SetStatusBoolFalse(string dataName) {
-        //     SetStatus(dataName, false);
-        // }
-        // public void SetStatusBoolToggle(string dataName) {
-        //     // var f = StatusManager.instance.Get(dataName);
-        //     // SetStatus(dataName, !(bool)f);
-        // }
     }
 }

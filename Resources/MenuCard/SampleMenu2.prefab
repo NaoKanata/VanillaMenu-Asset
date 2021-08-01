@@ -648,27 +648,55 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4490132823636685893}
+    - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 4490132823636685893}
     - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Set
       objectReference: {fileID: 0}
     - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ChangeValue
       objectReference: {fileID: 0}
     - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VVVanilla.Menu.ToggleUI, VVVanillaMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: VVVanilla.Menu.ToggleUI, VVVanillaMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: ToggleUI0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5518864329381172884, guid: 151c385b2b2714940bcbdc83c21e539c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -781,9 +809,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8621851233782698625}
     m_Modifications:
+    - target: {fileID: -3521603392405709564, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3521603392405709564, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 733060310265002561, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
       propertyPath: m_Name
       value: Toggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127406671959144965, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: targetKey
+      value: sample
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127406671959144965, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: OnChangeStatus.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127406671959144965, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: OnChangeStatus.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127406671959144965, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: OnChangeStatus.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2699907669758619011}
+    - target: {fileID: 3127406671959144965, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: OnChangeStatus.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127406671959144965, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: OnChangeStatus.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetStatus
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127406671959144965, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: OnChangeStatus.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VVVanilla.Menu.MenuCard, VVVanillaMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127406671959144965, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
+      propertyPath: OnChangeStatus.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3446811010372244238, guid: 20c6d070d0f491b459e51d577e9bae30, type: 3}
       propertyPath: m_fontAsset

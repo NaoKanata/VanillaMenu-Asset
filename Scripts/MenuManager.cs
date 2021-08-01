@@ -36,10 +36,14 @@ namespace VVVanilla.Menu
 
         public void OnChangeStatus(string key, string value) 
         {
-            Debug.Log($"key:{key},value:{value}");
             // 登録したキーと値によって反映させる値を切り替える
             if(_currentMenuCard != null) {
-                _currentMenuCard.GetComponent<MenuCard>().AffectValueFromReceivedData(key, value);
+                foreach(IUITips go in _currentMenuCard.GetComponentsInChildren<IUITips>())
+                {
+                    if(go.GetTargetKey() == key) {
+                        go.SetValue(value);
+                    }
+                }
             }
         }
 
