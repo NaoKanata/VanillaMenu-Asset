@@ -36,11 +36,10 @@ namespace VVVanilla.Menu
         /// <param name="key"></param>
         /// <param name="value"></param>
         public void AffectValueFromReceivedData(string key, string value) {
-            Debug.Log($"Received Data: key={key}, value={value}");
+            // Debug.Log($"Received Data: key={key}, value={value}");
             foreach(MenuUIAccessRegister param in menuUIAccessRegisters) {
                 if(param.Key == key) {
-                    // UITip の値変更処理（例えば、ToggleUI なら true/false の値から UI の見え方を変える処理）
-                    // UITip.ChangeValue(value) 的な
+                    param.Value.GetComponent<IUITips>().SetValue(value);
                 }
             }
         }
@@ -64,10 +63,9 @@ namespace VVVanilla.Menu
         }
 
         // TODO ここらへんどうするか問題
-        // public void SetStatus(string dataName, object data) {
-        //     // TODO UnityEvent に置き換える
-        //     // StatusManager.instance.Set(dataName, data);
-        // }
+        public void SetStatus(string dataName, object data) {
+            MenuManager.instance.SetStatusEvent.Invoke(dataName,data.ToString());
+        }
 
         // public void SetStatusBoolTrue(string dataName) {
         //     SetStatus(dataName, true);

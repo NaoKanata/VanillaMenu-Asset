@@ -14,54 +14,32 @@ namespace VVVanilla.Menu
     [Serializable]
     public class UnityEventBool : UnityEvent<bool> {}
 
-    public class ToggleUI : MonoBehaviour
+    public class ToggleUI : MonoBehaviour, IUITips
     {
         [SerializeField]
         Animator animator;
         [SerializeField]
         bool isUsingMonitoringData = false;
         [SerializeField]
-        string setDataName = "sampleData";
-        [SerializeField]
         UnityEventBool sendValueFunc;
+
+        /// <summary>
+        /// 値が変わったときのイベント、基本的には MenuCard と接続する
+        /// </summary>
         [SerializeField]
-        delegate bool getValueFunc();
+        UnityEvent<string, object> OnChangeStatus;
 
-        [SerializeField]
-        private bool selfData = false;
+        bool _currentStatus = false;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            // データベースから値を取得する
-            // 親の MenuUI から取得するようにする
-            CheckValue();
+        public void ChangeValue(string key) {
+            _currentStatus = !_currentStatus;
+            OnChangeStatus.Invoke(key, _currentStatus);
         }
 
-        public bool GetValue() {
-            return false;
+        public void SetValue(string value) {
+            _currentStatus = bool.Parse(value);
+            animator.SetBool("Flag", _currentStatus);
         }
 
-        private void OnEnable() {
-            animator.SetBool("Flag", selfData);
-        }
-
-        public void ChangeValue()
-        {
-            // 自信のデータを更新
-            selfData = !selfData;
-            CheckValue();
-
-        }
-
-        public void CheckValue()
-        {
-            // subscribe した関数を呼び出し
-            sendValueFunc.Invoke(selfData);
-
-            // 変更時のアニメーションを実行
-            animator.SetBool("Flag", selfData);
-        }
-        
     }
 }
